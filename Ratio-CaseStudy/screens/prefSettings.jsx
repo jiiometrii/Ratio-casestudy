@@ -27,11 +27,11 @@ const PrefSettings = ( {navigation, route} ) => {
         if (route.params?.genderOptions) {
             setSelectedGenderOptions(route.params.genderOptions);
         }
-        console.log('Distance: ' + distance + ' - Show Selected Distance Only: ' + distanceIsEnabled)
-        console.log('Age: ' + minAge + ' - ' + maxAge+ ' - Show Selected Age Only: ' + ageIsEnabled)
-        console.log('Show Verified: ' + verifiedIsEnabled)
-        console.log('Show Bio: ' + bioIsEnabled)
-        console.log('Gender Options: ' + selectedGenderOptions.join(', '))
+        console.log('\nDistance: ' + distance + ' - Show Selected Distance Only: ' + distanceIsEnabled +
+                    '\nAge: ' + minAge + ' - ' + maxAge+ ' - Show Selected Age Only: ' + ageIsEnabled + 
+                    '\nShow Verified: ' + verifiedIsEnabled +
+                    '\nShow Bio: ' + bioIsEnabled +
+                    '\nGender Options: ' + selectedGenderOptions.join(', '))
     }, [route.params?.genderOptions, distance, distanceIsEnabled, minAge, maxAge, ageIsEnabled, verifiedIsEnabled, bioIsEnabled, selectedGenderOptions]);
 
     const handleGenderSelect = () => {
