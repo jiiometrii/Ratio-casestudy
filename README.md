@@ -4,9 +4,9 @@ Submission for Ratio's Case Study Application
 If you don't have an iOS simulator (macOS only), download the Expo App on iOS phone if not already downloaded
 
 ## II. Navigating & Installation
-Clone the repository, make sure to navigate to  <u>**Ratio-casestudy app**</u> using `cd Ratio-casestudy` after cloning the repository 
+Clone the repository, make sure to navigate to  <u>**Ratio-casestudy app**</u> using `cd Ratio-CaseStudy` after cloning the repository 
 
-folder should look like this: `Drive:\<Parent folder>\Ratio-casestudy\Ratio-casestudy>`
+folder should look like this: `Drive:\<Parent folder>\Ratio-casestudy\Ratio-CaseStudy>`
 
 run the following command: `npm install`
 
