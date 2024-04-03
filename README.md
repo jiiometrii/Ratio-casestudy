@@ -1,7 +1,7 @@
 # Ratio-casestudy
 Submission for Ratio's Case Study Application
 ## I. Pre-requisites 
-If you don't have an iOS simulator, download the Expo App on iOS phone if not already downloaded
+If you don't have an iOS simulator (macOS only), download the Expo App on iOS phone if not already downloaded
 
 ## II. Navigating & Installation
 Clone the repository, make sure to navigate to  <u>**Ratio-casestudy app**</u> using `cd Ratio-casestudy` after cloning the repository 
