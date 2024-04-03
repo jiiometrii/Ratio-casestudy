@@ -17,4 +17,4 @@ command to start app `npx expo start`
 ### A. On macOS
 `npm run ios` to start iOS simulator
 ### B. Windows PC & iOS device
-Scan QR code shown after starting the app using the camera scanner. Expo should automatically open the app on your device.
+Scan QR code shown after starting the app using the camera scanner. Expo should automatically open the app on your iOS device.
