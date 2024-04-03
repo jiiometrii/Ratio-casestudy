@@ -1,29 +1,42 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Text, View, Switch, Dimensions, TouchableOpacity, SafeAreaView } from 'react-native';
 import Divider from '../components/divider';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import { useNavigation } from '@react-navigation/native';
-import { handleSelectionChange } from '../components/util';
-//import GenderSelection from './genderSelection';
 
-const PrefSettings = () => {
-    const navigation = useNavigation();
-
-    const handleGenderSelect = () => {
-        navigation.navigate('GenderSelection', { onSelectionChange: handleSelectionChange });
-    };
-
+const PrefSettings = ( {navigation, route} ) => {
+    // VALUES:
+    // distance, distanceIsEnabled
+    // selectedGenderOptions
+    // minAge, maxAge, ageIsEnabled
+    // verifiedIsEnabled, bioIsEnabled
     //declare states
     const [distance, setDistance] = useState(50);
     const [minAge, setMinAge] = useState(18);
     const [maxAge, setMaxAge] = useState(80);
-    const [genderOptions, setGenderOptions] = useState([]);
 
     //switch states
     const [distanceIsEnabled, setDistanceIsEnabled] = useState(false);
     const [ageIsEnabled, setAgeIsEnabled] = useState(false);
     const [verifiedIsEnabled, setVerifiedIsEnabled] = useState(false);
     const [bioIsEnabled, setBioIsEnabled] = useState(false);
+
+    const [selectedGenderOptions, setSelectedGenderOptions] = useState([]);
+
+    //console.log after rendering
+    useEffect(() => {
+        if (route.params?.genderOptions) {
+            setSelectedGenderOptions(route.params.genderOptions);
+        }
+        console.log('Distance: ' + distance + ' - Show Selected Distance Only: ' + distanceIsEnabled)
+        console.log('Age: ' + minAge + ' - ' + maxAge+ ' - Show Selected Age Only: ' + ageIsEnabled)
+        console.log('Show Verified: ' + verifiedIsEnabled)
+        console.log('Show Bio: ' + bioIsEnabled)
+        console.log('Gender Options: ' + selectedGenderOptions.join(', '))
+    }, [route.params?.genderOptions, distance, distanceIsEnabled, minAge, maxAge, ageIsEnabled, verifiedIsEnabled, bioIsEnabled, selectedGenderOptions]);
+
+    const handleGenderSelect = () => {
+        navigation.navigate('GenderSelection');
+    };
 
     //switch toggles
     const toggleDistSwitch = () => setDistanceIsEnabled(previousState => !previousState);
@@ -73,9 +86,9 @@ const PrefSettings = () => {
                     <View className="flex flex-row justify-between items-center my-3">
                         <Text className="font-[zilla] text-[17px]">Gender</Text>
                         <TouchableOpacity onPress={handleGenderSelect}>
-                            <Text className="font-[zilla] text-[17px]">{genderOptions.join(', ') || '>'}</Text>
+                        {/* {console.log('\nprinting Route.params.genderOptions: ' + route.params.genderOptions)} */}
+                            <Text className="font-[zilla] text-[17px]">{selectedGenderOptions.join(', ')} &gt;</Text>
                         </TouchableOpacity>
-                        {/* <Text className="font-[zilla] text-[17px]">Men &gt;</Text> */}
                     </View>
 
                     <Divider />
@@ -140,7 +153,6 @@ const PrefSettings = () => {
                 </View>
             </View>
         </SafeAreaView>
-        
     );
 };
 

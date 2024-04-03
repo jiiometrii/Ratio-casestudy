@@ -1,18 +1,9 @@
 import {React, useState }from 'react';
 import { TouchableOpacity, SafeAreaView, Text, View, Pressable } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
-// import GenderSelect from '../components/genderSelect';
-import { useNavigation } from '@react-navigation/native';
-import { handleSelectionChange } from '../components/util';
 
-const GenderSelection = ({ route }) => {
-    const navigation = useNavigation();
-
-    let genderOptions = [];
-
-    const handleConfirm = () => {
-        navigation.goBack();
-    };
+const GenderSelection = ({ navigation }) => {
+    const [selectedGenderOptions, setSelectedGenderOptions] = useState([]);
 
     const [menSelected, setMenSelected] = useState(true);
     const [femaleSelected, setFemaleSelected] = useState(false);
@@ -55,14 +46,12 @@ const GenderSelection = ({ route }) => {
         setBothSelected(newSelection.both);
 
         if (newSelection.both) {
-            genderOptions = ['Men', 'Women'];
+            setSelectedGenderOptions(['Men', 'Women']);
         } else if (newSelection.men) {
-            genderOptions = ['Men'];
+            setSelectedGenderOptions(['Men']);
         } else if (newSelection.female) {
-            genderOptions = ['Women'];
+            setSelectedGenderOptions(['Women']);
         }
-
-        console.log(genderOptions);
     };
     
     const menColor = menSelected ? ['#55b8fe', '#4ce1fb'] : ['#D9D9D9', '#D9D9D9']
@@ -138,7 +127,13 @@ const GenderSelection = ({ route }) => {
                 <TouchableOpacity
                     title="Confirm"
                     style={{ backgroundColor: '#000000', color: 'white', borderRadius: 10, padding: 24, width: '100%' }}
-                    onPress={handleConfirm}>
+                    onPress={() => {
+                        navigation.navigate({
+                            name: 'PrefSettings',
+                            params: { genderOptions: selectedGenderOptions },
+                            merge: true,
+                        });
+                    }}>
                     <Text className="text-center text-white font-[outfit-bold] text-[20px] underline">Confirm</Text>
                 </TouchableOpacity>
             </View>

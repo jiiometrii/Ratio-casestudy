@@ -28,7 +28,10 @@ if (!loaded) {
       initialRouteName="PrefSettings"
       screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="PrefSettings" component={PrefSettings} />
+        <Stack.Screen 
+          name="PrefSettings" 
+          component={PrefSettings}
+        />
         <Stack.Screen name="GenderSelection" component={GenderSelection} />
       </Stack.Navigator>
     </NavigationContainer>
