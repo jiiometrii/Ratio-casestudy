@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Text, View, Switch, Dimensions, TouchableOpacity, SafeAreaView } from 'react-native';
+import { Text, View, Switch, Dimensions, TouchableOpacity, SafeAreaView, Pressable } from 'react-native';
 import Divider from '../components/divider';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
@@ -51,7 +51,9 @@ const PrefSettings = ( {navigation, route} ) => {
             <View className="bg-[#EEEEEE] h-full">
                 <View className="flex flex-row justify-end items-end bg-[#FAFAFA] pt-7 pb-3">
                     <Text className="text-xl text-black font-[outfit-bold]">Preference Settings</Text>
-                    <Text className="text-[18px] text-black underline mr-4 ml-7 mb-1 font-[outfit-bold]">Done</Text>
+                    <Pressable onPress={() => navigation.goBack()}>
+                        <Text className="text-[18px] text-black underline mr-4 ml-7 mb-1 font-[outfit-bold]">Done</Text>
+                    </Pressable>
                 </View>
 
                 <View className="flex flex-col bg-[#FAFAFA] mt-[18px] border-y p-5">
